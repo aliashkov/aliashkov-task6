@@ -1,1 +1,0 @@
-# aliashkov-aliashkov-task6
