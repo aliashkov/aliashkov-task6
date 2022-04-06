@@ -1,21 +1,7 @@
-
 const http = require("http");
 const PORT = process.env.PORT || 3000;
 
-let users = [
-    {
-        name: "Sergey",
-    },
-    {
-        name: "Artyom",
-    },
-    {
-        name: "Inna",
-    },
-    {
-        name: "Oleg",
-    },
-];
+let users = require('./data')
 
 const server = http.createServer((req, res) => {
     if (req.url === "/users") {
