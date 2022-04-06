@@ -24,34 +24,48 @@ const server = http.createServer((req, res) => {
 });
 
 function getUsers(res) {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(JSON.stringify(users));
+    try {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(users));
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 
 function postUsers(req, res) {
-    body = '';
+    try {
+        body = '';
 
-    req.on('data', (chunk) => body += chunk)
+        req.on('data', (chunk) => body += chunk)
 
-    req.on('end', () => {
-        postBody = JSON.parse(body);
-        users.push(postBody);
-        res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(JSON.stringify(postBody));
-    });
+        req.on('end', () => {
+            postBody = JSON.parse(body);
+            users.push(postBody);
+            res.writeHead(200, { "Content-Type": "application/json" });
+            res.end(JSON.stringify(postBody));
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 
 function updateUsers(req, res) {
-    body = '';
+    try {
+        body = '';
 
-    req.on('data', (chunk) => body += chunk)
+        req.on('data', (chunk) => body += chunk)
 
-    req.on('end', () => {
-        postBody = JSON.parse(body);
-        users = postBody;
-        res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(JSON.stringify(postBody));
-    });
+        req.on('end', () => {
+            postBody = JSON.parse(body);
+            users = postBody;
+            res.writeHead(200, { "Content-Type": "application/json" });
+            res.end(JSON.stringify(postBody));
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 function getWrongStatus(res) {
